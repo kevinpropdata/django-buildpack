@@ -1,0 +1,2 @@
+git clone $PROJECT_GIT_URL $PROJECT
+mv $PROJECT "/app/"
