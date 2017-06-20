@@ -1,2 +1,4 @@
+echo $PROJECT_GIT_URL
+echo $PROJECT
 git clone $PROJECT_GIT_URL $PROJECT
 mv $PROJECT "/app/"
