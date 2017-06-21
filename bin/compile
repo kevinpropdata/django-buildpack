@@ -9,11 +9,5 @@ if [ -d "$env_dir" ]; then
   done
 fi
 
-printenv $PROJECT
-printenv $PROJECT_GIT_URL
-
-export project=$(printenv $PROJECT)
-export github_url=$(printenv $PROJECT_GIT_URL)
-
-git clone $github_url $project
-mv $project "/app/"
+git clone $PROJECT_GIT_URL $PROJECT
+mv $PROJECT "/app/"
