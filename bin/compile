@@ -8,6 +8,13 @@ if [ -d "$env_dir" ]; then
     export "$e=$(cat $env_dir/$e)";
   done
 fi
+mkdir /app/.ssh
+chmod 600 /app/.ssh
+cat $DEPLOY_KEY >> /app/.ssh/deploy_key
+cat $DEPLOY_KEY_PUB >> /app/.ssh/deploy_key.pub
+
+chmod 644 /app/.ssh/deploy_key.pub
+chmod 600 /app/.ssh/deploy_key
 
 git clone $PROJECT_GIT_URL $PROJECT
 mv $PROJECT "/app/"
