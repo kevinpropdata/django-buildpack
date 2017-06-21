@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -f $1/deploy.eos ]; then
-  echo "EOS build pack detected..."
+if [ -f $1/deploy.proj ]; then
+  echo "Django Project build pack detected..."
   exit 0
 else
   exit 1
