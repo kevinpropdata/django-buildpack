@@ -9,16 +9,5 @@ if [ -d "$env_dir" ]; then
   done
 fi
 build_dir=$1
-mkdir /$build_dir/.ssh
-
-echo $DEPLOY_KEY >> /$build_dir/.ssh/deploy_key
-echo $DEPLOY_KEY_PUB >> /$build_dir/.ssh/deploy_key.pub
-
-chmod 644 /$build_dir/.ssh/deploy_key.pub
-chmod 600 /$build_dir/.ssh/deploy_key
-chmod 600 /$build_dir/.ssh
-
-ssh-keygen -R github.com 
-
 git clone $PROJECT_GIT_URL $PROJECT
 mv $PROJECT "$build_dir/"
