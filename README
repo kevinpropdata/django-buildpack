@@ -1,0 +1,28 @@
+# DJANGO PROJECT BUILD PACK
+
+please set as your first heroku buildpack: https://github.com/debitoor/ssh-private-key-buildpack
+
+Please set as your second heroku build pack: https://github.com/kevinpropdata/django-buildpack
+
+# CONFIGS 
+
+    $ heroku config:set DEPLOY_BRANCH=heroku
+    $ heroku config:set PROJECT=mywebsite.com
+    $ heroku config:set PROJECT_GIT_URL=git@github.com/someproject.git
+    $ heroku config:set APP_NAME=mywebsite
+    $ heroku config:set SSH_HOSTS=git@github.com
+    $ heroku config:set SSH_KEY=YOUR_BASE64_ENCODED_PRIVATE_KEY
+
+
+# ABOUT
+
+This build pack will enable you to deploy multiple django projects in one go;
+simply connect each of your apps to a template deploy app and setup this build pack together with your applications specific config vars.
+
+When the template deploy app is updated it'll cause all connected apps to redeploy.
+
+
+## WHAT YOUR TEMPLATE DEPLOY APP SHOULD LOOK LIKE
+- deploy.proj  -- empty 
+- requirements.txt -- can be overriden in your project
+
