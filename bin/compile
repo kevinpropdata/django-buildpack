@@ -10,4 +10,4 @@ if [ -d "$env_dir" ]; then
 fi
 build_dir=$1
 git clone $PROJECT_GIT_URL $PROJECT
-mv {$PROJECT}/* {$build_dir}/
+mv $PROJECT/* $build_dir/
