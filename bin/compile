@@ -21,7 +21,7 @@ git clone $PROJECT_GIT_URL $current/$PROJECT
 
 cd $current/$PROJECT
 git checkout $DEPLOY_BRANCH
-mv $current/$APP_NAME/* $build_dir/
+mv $APP_NAME/* $build_dir/
 
 mv $current/wsgi.py $build_dir/$APP_NAME/
 
