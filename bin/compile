@@ -17,7 +17,7 @@ if [ -d "bin" ]; then
     cp -rf $current/bin $build_dir/
 fi
 
-git clone $PROJECT_GIT_URL current/$PROJECT
+git clone $PROJECT_GIT_URL $current/$PROJECT
 
 cd $current/$PROJECT
 git checkout $DEPLOY_BRANCH
