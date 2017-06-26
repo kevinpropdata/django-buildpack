@@ -1,7 +1,7 @@
 #!/bin/sh
 
 env_dir=$3
-current=(pwd)
+current=$(pwd)
 
 whitelist_regex=${2:-''}
 blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
