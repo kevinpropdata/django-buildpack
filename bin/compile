@@ -12,18 +12,25 @@ fi
 
 build_dir=$1
 
+echo "Cloning project"
 git clone $PROJECT_GIT_URL $PROJECT
 
 cd $PROJECT
+
+echo "Checking out deploy brach : $DEPLOY_BRANCH"
 git checkout $DEPLOY_BRANCH
+
+echo "Move project files into app directory"
 mv $APP_NAME/* $build_dir/
 
 
 if [ ! -d "$build_dir/$APP_NAME/bin" ]; then
+	echo "Copying post compile scripts"
     mv $build_dir/bin $build_dir/$APP_NAME/
 fi
 
 if [ ! -f "$build_dir/$APP_NAME/wsgi.py" ]
 then
+	echo "Copying wsgi file"
     mv $build_dir/wsgi.py $build_dir/$APP_NAME/
 fi
