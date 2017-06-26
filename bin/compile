@@ -1,7 +1,6 @@
 #!/bin/sh
 
 env_dir=$3
-current=$(pwd)
 
 whitelist_regex=${2:-''}
 blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH)$'}
@@ -13,14 +12,18 @@ fi
 
 build_dir=$1
 
-if [ -d "bin" ]; then
-    cp -rf $current/bin $build_dir/
-fi
+git clone $PROJECT_GIT_URL $PROJECT
 
-mv $current/wsgi.py $build_dir/
-
-git clone $PROJECT_GIT_URL $current/$PROJECT
-
-cd $current/$PROJECT
+cd $PROJECT
 git checkout $DEPLOY_BRANCH
 mv $APP_NAME/* $build_dir/
+
+
+if [ ! -d "$build_dir/$APP_NAME/bin" ]; then
+    mv $build_dir/bin $build_dir/$APP_NAME/
+fi
+
+if [ ! -f "$build_dir/$APP_NAME/wsgi.py" ]
+then
+    mv $build_dir/wsgi.py $build_dir/$APP_NAME/
+fi
