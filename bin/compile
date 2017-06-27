@@ -24,12 +24,6 @@ echo "Move project files into app directory"
 mv $APP_NAME/* $build_dir/
 
 
-if [ ! -d "$build_dir/$APP_NAME/bin" ]; then
-	echo "Copying post compile scripts"
-    mv $build_dir/bin $build_dir/$APP_NAME/
-    chmod +x $build_dir/$APP_NAME/bin/post_compile
-fi
-
 if [ ! -f "$build_dir/$APP_NAME/wsgi.py" ]
 then
 	echo "Copying wsgi file"
